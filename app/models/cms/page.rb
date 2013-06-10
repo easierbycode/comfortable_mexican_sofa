@@ -174,7 +174,7 @@ protected
   def validate_format_of_unescaped_slug
     return unless slug.present?
     unescaped_slug = CGI::unescape(self.slug)
-    errors.add(:slug, :invalid) unless unescaped_slug =~ /^\p{Alnum}[\.\p{Alnum}\p{Mark}_-]*$/i
+    errors.add(:slug, :invalid) unless unescaped_slug =~ /\A\p{Alnum}[\.\p{Alnum}\p{Mark}_-]*\z/i
   end
   
   # NOTE: This can create 'phantom' page blocks as they are defined in the layout. This is normal.

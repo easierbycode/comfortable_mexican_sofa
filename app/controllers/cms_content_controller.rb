@@ -48,8 +48,8 @@ protected
     
     if @cms_site
       if params[:cms_path].present?
-        params[:cms_path].gsub!(/^#{@cms_site.path}/, '')
-        params[:cms_path].to_s.gsub!(/^\//, '')
+        params[:cms_path].gsub!(/\A#{@cms_site.path}/, '')
+        params[:cms_path].to_s.gsub!(/\A\//, '')
       end
       I18n.locale = @cms_site.locale
     else
